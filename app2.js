@@ -20,7 +20,6 @@ function getDataFromApi(searchTerm, callback) {
 
 function renderYouTubeItem(item) {
     return "<div class=videoWrapper> <a href='https://www.youtube.com/watch?v=" + item.id.videoId + "'data-titlestyle='right' data-width='600' data-height='400' class='html5lightbox'> <img src=" + item.snippet.thumbnails.medium.url + "></a>" + "<p class='js-titleLink'>" + item.snippet.title + "</p></div>";
-    $(".embed").html(item.id.videoId);
 }
 
 function displayYouTubeSearchData(data) {
@@ -35,6 +34,7 @@ function displayYouTubeSearchData(data) {
 
 function watchSubmit() {
     $('.js-search-form').submit(function(e) {
+        $(".js-search-results").empty();
         e.preventDefault();
         var query = $(this).find('.js-query').val();
         getDataFromApi(query, displayYouTubeSearchData);
